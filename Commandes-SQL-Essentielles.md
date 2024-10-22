@@ -27,30 +27,60 @@ SHOW DATABASES;
 ```
 
 ### 1. `CREATE USER` <a name="createuser"></a>
-- **Description** : Crée un nouvel utilisateur pour accéder à la base de données.
+- **Description** : La commande `CREATE USER` permet de créer un nouvel utilisateur qui pourra accéder à la base de données avec les privilèges spécifiés. Chaque utilisateur est identifié par un nom d'utilisateur, un hôte (machine d'où il se connecte), et un mot de passe pour sécuriser l'accès.
+
 - **Exemple** :
 ```sql
 CREATE USER 'lecteur'@'localhost' IDENTIFIED BY 'lecteur';
 ```
 
-- **Vérifier** : L'ajout de l'utilisateur à la table `user`.
+  - **Détails** :
+    - `'lecteur'@'localhost'` : Crée un utilisateur nommé `lecteur` qui ne peut se connecter que depuis la machine locale (`localhost`).
+    - `IDENTIFIED BY 'lecteur'` : Définit le mot de passe de l'utilisateur comme `'lecteur'`.
+
+---
+
+- **Vérifier** : Pour vérifier que l'utilisateur a bien été créé, on consulte la table `user` dans la base de données `mysql`. Cette table contient toutes les informations sur les utilisateurs et leurs privilèges. La base de données `mysql` est utilisée par le système pour gérer les accès et autorisations.
+
+    La requête suivante permet de vérifier si l'utilisateur `lecteur` a été ajouté à la table `user` :
 ```sql
 USE mysql;
 
 SELECT User, Host FROM user WHERE User = 'lecteur';
 ```
 
-- **Droits Utilisateur** : Donne les droits d'accès à une base de données spécifique.
+  - **Détails** :
+    - La table `user` dans la base `mysql` stocke les utilisateurs de MySQL. Chaque entrée correspond à un utilisateur, et les colonnes importantes incluent :
+        - `User` : le nom de l'utilisateur.
+        - `Host` : l'hôte d'où l'utilisateur est autorisé à se connecter (ex. : `localhost`).
+    - Cette commande vérifie si l'utilisateur `lecteur` existe et peut se connecter à partir de `localhost`.
+
+---
+
+- **Droits Utilisateur** : Après la création de l'utilisateur, il faut lui attribuer les droits nécessaires pour accéder aux bases de données. Dans cet exemple, on accorde à l'utilisateur `lecteur` un accès en lecture (`SELECT`) à toutes les tables de la base de données `bibliotheque`.
+
 ```sql
 GRANT SELECT
 ON bibliotheque.*
 TO 'lecteur'@'localhost';
 ```
 
-- **FLUSH PRIVILEGES** : Rafraîchit les privilèges pour que les changements prennent effet.
+  - **Détails** :
+    - `GRANT SELECT` : accorde uniquement le droit de lecture.
+    - `ON bibliotheque.*` : applique ces droits à toutes les tables de la base de données `bibliotheque`.
+    - `TO 'lecteur'@'localhost'` : spécifie l'utilisateur et l'hôte à qui ces droits sont attribués.
+
+---
+
+- **FLUSH PRIVILEGES** : Pour que les modifications de privilèges prennent effet immédiatement, il est nécessaire de vider le cache des privilèges avec la commande suivante :
+
 ```sql
 FLUSH PRIVILEGES;
 ```
+
+  - **Détails** :
+    - Cette commande force MySQL à recharger les privilèges en mémoire pour qu'ils soient immédiatement actifs.
+
 
 ### 2. `CREATE TABLE` <a name="createtable"></a>
 - **Description** : Crée une nouvelle table dans la base de données.
