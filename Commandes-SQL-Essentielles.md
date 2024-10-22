@@ -1,6 +1,7 @@
 # Commandes SQL Essentielles
 
 ## Table des matières
+- [CREATE USER](#createuser)
 - [CREATE TABLE](#createtable)
 - [INSERT INTO](#insertinto)
 - [SELECT](#select)
@@ -16,7 +17,26 @@
 - [UNION](#union)
 
 ---
+### 0. `CREATE USER` <a name="createuser"></a>
+- **Description** : Crée un nouvelle utilisateur pour utiliser la base de données.
+- **Exemple** :
+```sql
+CREATE USER 'lecteur'@'localhost' IDENTIFIED BY 'lecteur'
+```
 
+- **Vérifier** : L'ajout de l'utilisateur à la table User
+```sql
+USE mysql;
+
+SELECT User, Host FROM User Where User = 'lecteur';
+```
+
+- **Droits Utilisateur** : Données les droits d'accées à la base de données
+```sql
+GRANT SELECT
+ON bibliotheque.*
+TO 'lecteur'@'localhost';
+```
 ### 1. `CREATE TABLE` <a name="createtable"></a>
 - **Description** : Crée une nouvelle table dans la base de données.
 - **Tip** : Spécifie les colonnes et leurs types de données lors de la création de la table.
