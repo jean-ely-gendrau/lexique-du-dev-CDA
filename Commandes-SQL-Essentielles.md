@@ -81,6 +81,7 @@ FLUSH PRIVILEGES;
   - **Détails** :
     - Cette commande force MySQL à recharger les privilèges en mémoire pour qu'ils soient immédiatement actifs.
 
+---
 
 ### 2. `CREATE TABLE` <a name="createtable"></a>
 - **Description** : Crée une nouvelle table dans la base de données.
@@ -94,6 +95,8 @@ CREATE TABLE users (
 );
 ```
 
+---
+
 ### 3. `INSERT INTO` <a name="insertinto"></a>
 - **Description** : Insère de nouvelles lignes de données dans une table.
 - **Tip** : Les valeurs doivent correspondre aux colonnes définies dans la table.
@@ -102,7 +105,7 @@ CREATE TABLE users (
 INSERT INTO users (id, name, email)
 VALUES (1, 'John Doe', 'john.doe@example.com');
 ```
-
+---
 ### 4. `SELECT` <a name="select"></a>
 - **Description** : Récupère des données d'une ou plusieurs tables.
 - **Info** : Utilisé avec des clauses comme `WHERE`, `JOIN`, et `ORDER BY` pour filtrer ou organiser les résultats.
@@ -110,6 +113,8 @@ VALUES (1, 'John Doe', 'john.doe@example.com');
 ```sql
 SELECT name, email FROM users;
 ```
+
+---
 
 ### 5. `WHERE` <a name="where"></a>
 - **Description** : Filtre les lignes dans une requête SQL selon une condition spécifique.
@@ -119,6 +124,8 @@ SELECT name, email FROM users;
 SELECT * FROM users
 WHERE id = 1;
 ```
+
+---
 
 ### 6. `JOIN` <a name="join"></a>
 - **Description** : Combine des lignes de plusieurs tables basées sur une condition commune entre elles.
@@ -130,6 +137,8 @@ FROM users
 INNER JOIN orders ON users.id = orders.user_id;
 ```
 
+---
+
 ### 7. `UPDATE` <a name="update"></a>
 - **Description** : Modifie les valeurs des colonnes d'une ou plusieurs lignes dans une table.
 - **Warning** : Assure-toi d'utiliser `WHERE` pour éviter de mettre à jour toutes les lignes !
@@ -140,6 +149,8 @@ SET email = 'new.email@example.com'
 WHERE id = 1;
 ```
 
+---
+
 ### 8. `DELETE` <a name="delete"></a>
 - **Description** : Supprime des lignes d'une table.
 - **Warning** : Sans `WHERE`, toutes les lignes de la table seront supprimées.
@@ -148,6 +159,8 @@ WHERE id = 1;
 DELETE FROM users
 WHERE id = 1;
 ```
+
+---
 
 ### 9. `ALTER TABLE` <a name="altertable"></a>
 - **Description** : Modifie la structure d'une table existante (ajout de colonnes, modification de types, etc.).
@@ -158,6 +171,8 @@ ALTER TABLE users
 ADD phone_number VARCHAR(20);
 ```
 
+---
+
 ### 10. `GROUP BY` <a name="groupby"></a>
 - **Description** : Regroupe les lignes ayant des valeurs identiques dans certaines colonnes et permet d'appliquer des fonctions d'agrégation (`COUNT`, `SUM`, `AVG`, etc.).
 - **Exemple** :
@@ -166,6 +181,8 @@ SELECT country, COUNT(*)
 FROM users
 GROUP BY country;
 ```
+
+---
 
 ### 11. `HAVING` <a name="having"></a>
 - **Description** : Filtre les résultats après l'application de `GROUP BY`, souvent utilisé avec des fonctions d'agrégation.
@@ -177,6 +194,8 @@ GROUP BY country
 HAVING COUNT(*) > 10;
 ```
 
+---
+
 ### 12. `ORDER BY` <a name="orderby"></a>
 - **Description** : Trie les résultats d'une requête dans un ordre spécifique (croissant ou décroissant).
 - **Tip** : Par défaut, l'ordre est croissant (`ASC`). Utilise `DESC` pour l'ordre décroissant.
@@ -186,6 +205,8 @@ SELECT * FROM users
 ORDER BY name ASC;
 ```
 
+---
+
 ### 13. `LIMIT` <a name="limit"></a>
 - **Description** : Restreint le nombre de résultats renvoyés par une requête.
 - **Tip** : Utile pour paginer les résultats.
@@ -194,6 +215,8 @@ ORDER BY name ASC;
 SELECT * FROM users
 LIMIT 10;
 ```
+
+---
 
 ### 14. `UNION` <a name="union"></a>
 - **Description** : Combine les résultats de deux ou plusieurs requêtes `SELECT` en supprimant les doublons.
