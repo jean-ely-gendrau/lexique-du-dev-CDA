@@ -46,7 +46,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Garantit qu'une classe n'a qu'une seule instance et fournit un point d'accès global à celle-ci.
   
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   public class Singleton {
       private static Singleton instance;
 
@@ -59,7 +59,7 @@ On classe généralement ces patterns en trois grandes catégories :
           return instance;
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez le pattern Singleton pour des ressources partagées comme des connexions à une base de données.
 
@@ -70,7 +70,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Définit une interface pour créer un objet, mais laisse les sous-classes décider de la classe à instancier.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   interface Product {
       void use();
   }
@@ -102,7 +102,7 @@ On classe généralement ces patterns en trois grandes catégories :
           return new ConcreteProductB();
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez Factory Method pour promouvoir la flexibilité et la réutilisation du code.
 
@@ -113,7 +113,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Fournit une interface pour créer des familles d'objets sans spécifier leurs classes concrètes.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   interface AbstractFactory {
       ProductA createProductA();
       ProductB createProductB();
@@ -136,7 +136,7 @@ On classe généralement ces patterns en trois grandes catégories :
           return new ProductB2();
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez Abstract Factory lorsque vous devez garantir que des objets compatibles sont créés.
 
@@ -147,7 +147,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Permet de construire un objet complexe étape par étape.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   class Product {
       private String partA;
       private String partB;
@@ -173,7 +173,7 @@ On classe généralement ces patterns en trois grandes catégories :
           return product;
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez Builder pour créer des objets complexes, en séparant la construction de leur représentation.
 
@@ -184,7 +184,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Permet de créer des objets en copiant un prototype.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   class Prototype implements Cloneable {
       public Prototype clone() {
           try {
@@ -194,7 +194,7 @@ On classe généralement ces patterns en trois grandes catégories :
           }
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez Prototype pour éviter le coût de création d'objets complexes.
 
@@ -207,7 +207,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Permet à des classes incompatibles de travailler ensemble en les adaptant.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   class Target {
       public void request() {
           System.out.println("Target: request");
@@ -231,7 +231,7 @@ On classe généralement ces patterns en trois grandes catégories :
           adaptee.specificRequest();
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez le pattern Adapter pour intégrer des systèmes existants.
 
@@ -242,7 +242,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Compose des objets en structures arborescentes pour représenter des hiérarchies partie-tout.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   interface Component {
       void operation();
   }
@@ -266,7 +266,7 @@ On classe généralement ces patterns en trois grandes catégories :
           }
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez Composite pour traiter des objets individuels et des compositions d'objets de manière uniforme.
 
@@ -277,7 +277,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Ajoute dynamiquement des fonctionnalités à un objet.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   interface Component {
       void operation();
   }
@@ -310,7 +310,7 @@ On classe généralement ces patterns en trois grandes catégories :
           System.out.println("ConcreteDecorator operation");
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez le pattern Decorator pour ajouter des responsabilités à des objets au lieu de créer des sous-classes.
 
@@ -321,7 +321,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Fournit une interface simplifiée à un ensemble d'interfaces d'un sous-système.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   class SubsystemA {
       public void operationA() {
           System.out.println("SubsystemA: operationA");
@@ -343,7 +343,7 @@ On classe généralement ces patterns en trois grandes catégories :
           subsystemB.operationB();
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez Facade pour réduire la complexité d'un système.
 
@@ -354,7 +354,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Contrôle l'accès à un autre objet en le représentant.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   interface Subject {
       void request();
   }
@@ -375,7 +375,7 @@ On classe généralement ces patterns en trois grandes catégories :
           realSubject.request();
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez Proxy pour ajouter des fonctionnalités comme la mise en cache ou la sécurité.
 
@@ -388,7 +388,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Permet à plusieurs objets de traiter une requête sans connaître le demandeur.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   abstract class Handler {
       protected Handler successor;
 
@@ -418,7 +418,7 @@ On classe généralement ces patterns en trois grandes catégories :
           }
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez ce pattern pour éviter des conditions if-else complexes.
 
@@ -429,7 +429,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Encapsule une demande en tant qu'objet, permettant de paramétrer les clients avec des requêtes.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   interface Command {
       void execute();
   }
@@ -451,7 +451,7 @@ On classe généralement ces patterns en trois grandes catégories :
           System.out.println("Receiver action executed");
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez Command pour soutenir des opérations annulables ou des journaux d'opérations.
 
@@ -462,7 +462,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Donne une représentation grammaticale d'un langage et un interprète pour évaluer les phrases.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   interface Expression {
       int interpret();
   }
@@ -492,7 +492,7 @@ On classe généralement ces patterns en trois grandes catégories :
           return left.interpret() + right.interpret();
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez Interpreter pour des langages simples ou des grammaires spécifiques.
 
@@ -503,7 +503,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Fournit un moyen d'accéder aux éléments d'un agrégat sans exposer sa représentation sous-jacente.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   interface Iterator {
       boolean hasNext();
       Object next();
@@ -545,7 +545,7 @@ On classe généralement ces patterns en trois grandes catégories :
           return aggregate.getItems().get(current++);
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez Iterator pour parcourir des collections sans exposer leur structure.
 
@@ -556,7 +556,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Définit un objet qui encapsule la manière dont un ensemble d'objets interagit.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   interface Mediator {
       void notify(Component sender, String event);
   }
@@ -607,7 +607,7 @@ On classe généralement ces patterns en trois grandes catégories :
           mediator.notify(this, "B");
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez Mediator pour réduire les dépendances entre les composants.
 
@@ -618,7 +618,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Permet à un objet d'informer d'autres objets des changements d'état.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   interface Observer {
       void update(String message);
   }
@@ -642,7 +642,7 @@ On classe généralement ces patterns en trois grandes catégories :
           }
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez Observer pour des notifications en temps réel entre objets.
 
@@ -653,7 +653,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Définit une famille d'algorithmes, encapsule chacun d'eux et les rend interchangeables.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   interface Strategy {
       void execute();
   }
@@ -681,7 +681,7 @@ On classe généralement ces patterns en trois grandes catégories :
           strategy.execute();
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez Strategy pour rendre le code plus flexible et évolutif.
 
@@ -692,7 +692,7 @@ On classe généralement ces patterns en trois grandes catégories :
 - **Description** : Définit le squelette d'un algorithme dans une méthode, laissant certaines étapes à des sous-classes.
 
 - **Exemple d'implémentation** :
-  $$$java
+  ```java
   abstract class AbstractClass {
       public final void templateMethod() {
           stepOne();
@@ -712,7 +712,7 @@ On classe généralement ces patterns en trois grandes catégories :
           System.out.println("ConcreteClass step two");
       }
   }
-  $$$
+  ```
 
 - **Conseils** : Utilisez Template Method pour éviter la duplication de code.
 
