@@ -146,13 +146,39 @@ Inclure un fragment dans une autre page :
 
 Thymeleaf propose des fonctionnalités dédiées pour la gestion des formulaires. En liant directement les champs du formulaire à des propriétés d'un objet, vous facilitez la validation et la récupération des données en Java.
 
-### Exemple d'implémentation
+### Exemples d'implémentations
 
 ```html
 <form th:object="${user}" action="#" method="post">
     <input type="text" th:field="*{nom}" />
     <input type="submit" value="Envoyer" />
 </form>
+```
+
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulaire Utilisateur</title>
+</head>
+<body>
+    <h1>Formulaire d'inscription</h1>
+
+    <form action="#" th:action="@{/formulaire}" th:object="${utilisateur}" method="post">
+        <div>
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" th:field="*{nom}" />
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" />
+        </div>
+        <div>
+            <button type="submit">Soumettre</button>
+        </div>
+    </form>
+</body>
+</html>
 ```
 
 Ce code génère un formulaire lié à l'objet `user` et à sa propriété `nom`.
